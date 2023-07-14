@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+        /* kleuren */
+        --color-primary-100: rgb(0, 126, 252);
+        --color-primary-50: rgb(82, 167, 253);
+        --color-primary-25: rgb(167, 206, 246);
+        --color-secundary-100: rgb(237, 59, 59);
+        --color-default: #f4f4f4;        
+        --color-accent-25: #eee;
+        --color-accent-50: #ccc;
+        --color-accent-100: #888;
+        --color-invert: #111;
+}
+
+@font-face {
+    font-family: "Roboto-slab-thin";
+    src:
+      local("Roboto Slab Thin"),
+      url("RobotoSlab-Thin.ttf");
+      font-weight: 200;
+}
+
+@font-face {
+    font-family: "Roboto-slab-regular";
+    src:
+      local("Roboto Slab Regular"),
+      url("RobotoSlab-Regular.ttf");
+      font-weight: 400;
+}
+
+html {
+    font-family: 'Roboto-Slab-regular', sans-serif;
+
+}
+
+body {
+    background-image: linear-gradient(215deg, rgb(0, 112, 255) 15%, #D94EBD 60%, #F84F4F 90%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Layout */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.index {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 16px;
+}
+
+.index h1 {
+    font-size: 2.5em;
+}
+
+.forecast {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+}
+
+.temprature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.temprature div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temprature div h1 {
+    font-family: 'Roboto-slab-regular';
+}
+
+.temprature div h2 {
+    color: var(--color-default);
+    font-family: 'Roboto-slab-thin';
+    opacity: 0.66;
+}
+
+.temprature section {
+    display: flex;
+    justify-content: center;
+}
+
+.temprature section h2 {
+    font-family: 'Roboto-slab-thin';
+    font-size: 5.625em;
+}
+
+.weather-conditions {
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    gap: 1em;
+}
+
+.weather-conditions .overview {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}
+
+.weather-conditions ul {
+    display: flex;
+    flex-direction: row;
+    padding: 1em 0;
+    gap: 1em;
+    overflow: auto;
+}
+
+.weather-conditions ul li {
+    color: var(--color-default);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+}
+
+.weather-conditions p {
+    font-family: 'Roboto-slab-thin';
+}
+
+.widget {
+    height: fit-content;
+    background-color: rgba(244, 244, 244, 20%);
+    border: 1px solid #f4f4f4;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.large-widget {
+    width: 100%;
+}
+
+.mid-widget {
+    height: 6em;
+    position: relative;
+}
+
+.mid-widget h3:last-child {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.mid-widget sup {
+    font-size: 0.8em;
+}
+
+/* Typografie */
+
+h1, h2 ,h3 {
+    width: fit-content;
+    font-weight: initial;
+    line-height: 1;
+}
+
+h1 {
+    color: var(--color-default);
+    font-weight: 300;
+    font-size: 2.5em;
+}
+
+h1 mark {
+    background-color: deepskyblue;
+    color: var(--color-default);
+    padding: 0.5rem 0.5rem 0.2rem 0.5rem;
+    font-size: 150%;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+h2 {
+    font-family: 'Roboto-slab-regular';
+    color: var(--color-default);
+    opacity: 1;
+}
+
+h3 {
+    color: var(--color-default);
+}
+
+sup {
+    font-family: 'Roboto-slab-thin';
+    font-size: 0.5em;
+}
+
+/* Afbeeldingen */
+.logo {
+    width: 7.5em;
+}
+
+/* Zoekveld */
+form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 0;
+    gap: 1em;
+}
+
+input[type="search"] {
+    background-color: rgba(244, 244, 244, 20%);
+    border: 2px solid var(--color-accent-50);
+    color: var(--color-default);
+    border-radius: 8px;
+    width: 100%;
+    height: 2em;
+    padding: 1.5em;
+}
+
+input[type="search"]::placeholder {
+    color: var(--color-default);
+}
+
+input[type="search"]:focus-visible {
+    outline: none;
+}
+
+button {
+    background-color: rgba(244, 244, 244, 0%);
+    border: none;
+    color: var(--color-default);
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 4px;
+    cursor: pointer;
+}
+
+button svg {
+    stroke: var(--color-default);
+}

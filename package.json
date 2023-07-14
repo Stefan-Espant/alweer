@@ -1,0 +1,22 @@
+{
+  "name": "meteovue",
+  "version": "1.0.0",
+  "description": "Een weerapp gebouwd met HTML, CSS,  NodeJS &  VueJS",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stefan van der Kort",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "@tabler/icons": "^2.24.0",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1"
+  }
+}

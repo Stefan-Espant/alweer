@@ -1,0 +1,5 @@
+@media (min-width: 25em) {
+    .weather-conditions .overview {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
