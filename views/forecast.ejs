@@ -75,7 +75,7 @@
                             <path d="M4 12a8 8 0 0 1 16 0z"></path>
                             <path d="M12 12v6a2 2 0 0 0 4 0"></path>
                          </svg>
-                         <%= hourly.precipitationProbability %>
+                         <%= hourly.precipitation_probability[0] %>
                          <sup>
                          %
                         </sup>
@@ -225,8 +225,10 @@
                             </defs>
                             </svg>
                             <span>
-                                <%= hourly.visibility[0] %>              
-                                <sup>m</sup>
+                                <% const visibilityMeters = hourly.visibility[0]; %>
+                                <% const visibilityKilometers = visibilityMeters / 1000; %>
+                                <%= visibilityKilometers %>              
+                                <sup>km</sup>
                             </span>
                     </h3>
                 </article>

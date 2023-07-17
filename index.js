@@ -59,6 +59,7 @@ app.get("/forecast", async (request, response) => {
       daily: currentWeather.daily,
       getTime: getTime // Pass the getTime function to the template
     });
+    
   });
 
 // Stelt het poortnummer in waar express op gaat luisteren

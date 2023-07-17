@@ -1,0 +1,37 @@
+@media (min-width: 48em) {
+
+    .index {
+        width: 66vw;
+        margin: 0 auto;
+    }
+
+    .forecast {
+        width: 66vw;
+        height: fit-content;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 2em;
+    }
+
+    .temperature {
+        width: 27.5vw;
+        height: auto;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .weather-conditions {
+        width: 40vw;
+    }
+
+    /* Formulier */
+
+}
+
+@media (min-width: 80em) {
+    .temperature {
+        justify-content: center;
+        padding: 1em;
+    }
+}
