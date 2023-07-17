@@ -15,14 +15,14 @@
     }
 
     .temperature {
-        width: 27.5vw;
+        width: 20vw;
         height: auto;
         justify-content: center;
         padding: 2em;
     }
 
     .weather-conditions {
-        width: 40vw;
+        width: 55vw;
     }
 
     /* Formulier */
@@ -31,7 +31,12 @@
 
 @media (min-width: 80em) {
     .temperature {
+        width: 27.5vw;
         justify-content: center;
         padding: 1em;
+    }
+
+    .weather-conditions {
+        width: 40vw;
     }
 }
