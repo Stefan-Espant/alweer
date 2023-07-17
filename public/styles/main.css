@@ -139,6 +139,7 @@ header {
     padding: 1em 0;
     gap: 2em;
     overflow: auto;
+    scroll-snap-type: x mandatory;
 }
 
 .weather-conditions ul li {
@@ -149,6 +150,7 @@ header {
     align-items: center;
     justify-content: center;
     gap: 0.25em;
+    scroll-snap-align: center;
 }
 
 .weather-conditions p {

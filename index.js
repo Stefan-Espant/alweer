@@ -19,42 +19,43 @@ function getTime(dateTimeString) {
 
 // Importeert de url met weer data
 const weatherUrl =
-	"https://api.open-meteo.com/v1/forecast?latitude=52.26&longitude=4.5569&hourly=temperature_2m,dewpoint_2m,rain,visibility,windspeed_10m,winddirection_10m&daily=sunrise,sunset&current_weather=true&timezone=Europe%2FBerlin&forecast_days=1";
+	"https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=4.5569&hourly=temperature_2m,dewpoint_2m,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max";
 
 const currentWeatherUrl =
-	weatherUrl + "&current_weather=true";
+	weatherUrl + "&current_weather=true&timezone=Europe%2FBerlin&forecast_days=1";
 
 // Maakt een route voor de overzichtspagina
 app.get("/", (request, response) => {
-	fetchJson(weatherUrl).then((data) => {
+	fetchJson(currentWeatherUrl).then((data) => {
 		response.render("index");
 	});
 });
 
-// Maakt een route voor de weersverwachtingspagina
 app.get("/forecast", async (request, response) => {
     const currentWeather = await fetchJson(currentWeatherUrl);
-    const hourlyWeather = await fetchJson(weatherUrl);
   
-    if (!currentWeather || !hourlyWeather) {
-      // Error handling if the data cannot be fetched
-      response.render("error");
-      return;
-    }
     const time = currentWeather.hourly.time[0].split("T")[1];
-  
     const sunriseTime = currentWeather.daily.sunrise[0].split("T")[1];
     const sunsetTime = currentWeather.daily.sunset[0].split("T")[1];
-  
+    const precipitation = currentWeather.hourly.precipitation;
+    const precipitationProbability = currentWeather.hourly.precipitation_probability;
     const surfacePressure = currentWeather.hourly.surface_pressure;
+    const surfaceTemperature = currentWeather.hourly.soil_temperature_6cm;
+    const visibility = currentWeather.hourly.visibility;
+    const soilMoisture = currentWeather.hourly.soil_moisture_27_81cm;
   
     response.render("forecast", {
       time: time,
       sunriseTime: sunriseTime,
       sunsetTime: sunsetTime,
-      surfacePressure: hourlyWeather.hourly.surface_pressure,
+      precipitation: currentWeather.precipitation,
+      precipitation_probability: precipitationProbability,
+      surface_pressure: surfacePressure,
+      surface_temperature: surfaceTemperature,
       current_weather: currentWeather.current_weather,
-      hourly: hourlyWeather.hourly,
+      visibility: visibility,
+      soilMoisture: soilMoisture,
+      hourly: currentWeather.hourly,
       daily: currentWeather.daily,
       getTime: getTime // Pass the getTime function to the template
     });
