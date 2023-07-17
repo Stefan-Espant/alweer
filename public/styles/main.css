@@ -24,7 +24,7 @@
     font-family: "Roboto-slab-thin";
     src:
       local("Roboto Slab Thin"),
-      url("RobotoSlab-Thin.ttf");
+      url("../fonts/RobotoSlab-Thin.ttf.ttf");
       font-weight: 200;
 }
 
@@ -32,12 +32,12 @@
     font-family: "Roboto-slab-regular";
     src:
       local("Roboto Slab Regular"),
-      url("RobotoSlab-Regular.ttf");
+      url("../fonts/RobotoSlab-Regular.ttf");
       font-weight: 400;
 }
 
 html {
-    font-family: 'Roboto-slab-regular', 'rockwell', 'helvetica' , sans-serif;
+    font-family: 'Roboto-slab-regular', 'helvetica' , sans-serif;
 
 }
 
