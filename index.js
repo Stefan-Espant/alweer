@@ -19,7 +19,7 @@ function getTime(dateTimeString) {
 
 // Importeert de url met weer data
 const weatherUrl =
-	"https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=4.5569&hourly=temperature_2m,dewpoint_2m,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max";
+	"https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=4.5569&hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max";
 
 const currentWeatherUrl =
 	weatherUrl + "&current_weather=true&timezone=Europe%2FBerlin&forecast_days=1";
@@ -38,6 +38,7 @@ app.get("/forecast", async (request, response) => {
     const sunriseTime = currentWeather.daily.sunrise[0].split("T")[1];
     const sunsetTime = currentWeather.daily.sunset[0].split("T")[1];
     const precipitation = currentWeather.hourly.precipitation;
+    const apparentTemperature = currentWeather.hourly.apparent_temperature;
     const precipitationProbability = currentWeather.hourly.precipitation_probability;
     const surfacePressure = currentWeather.hourly.surface_pressure;
     const surfaceTemperature = currentWeather.hourly.soil_temperature_6cm;
@@ -49,6 +50,7 @@ app.get("/forecast", async (request, response) => {
       sunriseTime: sunriseTime,
       sunsetTime: sunsetTime,
       precipitation: currentWeather.precipitation,
+      apparent_temperature: currentWeather.apparentTemperature,
       precipitation_probability: precipitationProbability,
       surface_pressure: surfacePressure,
       surface_temperature: surfaceTemperature,

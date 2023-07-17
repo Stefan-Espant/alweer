@@ -17,6 +17,9 @@
         --color-invert: #111;
 }
 
+@import url(../fonts/RobotoSlab-Thin.ttf.ttf);
+@import url(../fonts/RobotoSlab-Regular.ttf);
+
 @font-face {
     font-family: "Roboto-slab-thin";
     src:
@@ -90,13 +93,8 @@ header {
     align-items: center;
 }
 
-.temperature div h1 {
-    font-family: 'Roboto-slab-regular';
-}
-
 .temperature div h2 {
     color: var(--color-default);
-    font-family: 'Roboto-slab-thin';
     opacity: 0.66;
 }
 
@@ -106,7 +104,6 @@ header {
 }
 
 .temperature section h2 {
-    font-family: 'Roboto-slab-thin';
     font-size: 5.625em;
     letter-spacing: -0.04em;
     position: relative;
@@ -154,7 +151,7 @@ header {
 }
 
 .weather-conditions p {
-    font-family: 'Roboto-slab-thin';
+    font-family: 'Roboto-slab-regular';
 }
 
 .widget {
@@ -213,7 +210,6 @@ h1 mark {
 }
 
 h2 {
-    font-family: 'Roboto-slab-regular';
     color: var(--color-default);
     opacity: 1;
 }
@@ -223,7 +219,6 @@ h3 {
 }
 
 sup {
-    font-family: 'Roboto-slab-thin';
     font-size: 0.5em;
 }
 
