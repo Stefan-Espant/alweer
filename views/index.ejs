@@ -7,9 +7,11 @@
     <section>
         <h1>Bekijk de voorspellingen van:</h1>
 
-        <form>
-            <input type="search" placeholder="Amsterdam, Breda, Coevoorden..." />
-            <button title="zoeken">
+        <form action="/forecast" method="get" autocomplete="on">
+            <label for="search" hidden>Zoek een plaats</label>
+            <input required id="search" type="search" placeholder="Amsterdam, Breda, Coevoorden..." value="" />
+            <button
+            title="zoeken" type="submit" value="zoeken">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24"
                     height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -21,11 +23,11 @@
         </form>
     </section>
 
-    <section>
+    <!-- <section>
         <ul>
             <li></li>
         </ul>
-    </section>
+    </section> -->
 
 </main>
 

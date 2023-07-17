@@ -57,8 +57,13 @@ header {
 
 .index {
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     padding: 16px;
+    height: 80%;
+}
+
+.index section {
+    margin: auto 0;
 }
 
 .index h1 {
@@ -71,7 +76,7 @@ header {
     grid-template-rows: 2fr 3fr;
 }
 
-.temprature {
+.temperature {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,30 +84,36 @@ header {
     gap: 1em;
 }
 
-.temprature div {
+.temperature div {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.temprature div h1 {
+.temperature div h1 {
     font-family: 'Roboto-slab-regular';
 }
 
-.temprature div h2 {
+.temperature div h2 {
     color: var(--color-default);
     font-family: 'Roboto-slab-thin';
     opacity: 0.66;
 }
 
-.temprature section {
+.temperature section {
     display: flex;
     justify-content: center;
 }
 
-.temprature section h2 {
+.temperature section h2 {
     font-family: 'Roboto-slab-thin';
     font-size: 5.625em;
+    letter-spacing: -0.04em;
+    position: relative;
+}
+
+.temperature section sup {
+    position: absolute;
 }
 
 .weather-conditions {
@@ -119,13 +130,14 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
+    margin-bottom: 1em;
 }
 
 .weather-conditions ul {
     display: flex;
     flex-direction: row;
     padding: 1em 0;
-    gap: 1em;
+    gap: 2em;
     overflow: auto;
 }
 
@@ -185,6 +197,7 @@ h1 {
     color: var(--color-default);
     font-weight: 300;
     font-size: 2.5em;
+    max-width: 10em;
 }
 
 h1 mark {
@@ -218,6 +231,10 @@ sup {
 }
 
 /* Zoekveld */
+a {
+    color: var(--color-default);
+}
+
 form {
     display: flex;
     flex-direction: row;
