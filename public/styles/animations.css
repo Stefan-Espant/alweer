@@ -1,0 +1,26 @@
+@keyframes fade-in {
+    0% {
+      transform: translateY(1em);
+      opacity: 0;
+    }
+  
+    66% {
+      transform: translateY(-0.33em);
+    }
+  
+    100% {
+      transform: translateY(0em);
+      opacity: 1;
+    }
+  }
+
+  @keyframes appear {
+    
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+  }

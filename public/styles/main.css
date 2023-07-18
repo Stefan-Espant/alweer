@@ -69,6 +69,8 @@ header {
 .index section {
     width: fit-content;
     margin: auto;
+    opacity: 0;
+    animation: fade-in 0.9s 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
 .index h1 {
@@ -87,6 +89,8 @@ header {
     align-items: center;
     justify-content: center;
     gap: 1em;
+    opacity: 0;
+    animation: fade-in 0.9s 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
 .temperature div {
@@ -109,6 +113,7 @@ header {
     font-size: 5.625em;
     letter-spacing: -0.04em;
     position: relative;
+    animation: fade-in 1s 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
 .temperature section sup {
@@ -122,6 +127,8 @@ header {
     flex-wrap: wrap;
     padding: 16px;
     gap: 1em;
+    opacity: 0;
+    animation: appear 0.8s 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
 .weather-conditions .overview {
