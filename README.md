@@ -24,7 +24,8 @@
 
 
 ## Bronnen
-
+[Open meteo](https://open-meteo.com)
+[Can I use](https://caniuse.com)
 
 ## Licentie
 This project is licensed under the terms of the [MIT license](./LICENSE).
