@@ -1,13 +1,17 @@
 @media (min-width: 48em) {
 
+    header {
+        position: absolute;
+    }
+
     .index {
-        width: 66vw;
+        width: fit-content;
         margin: 0 auto;
     }
 
     .forecast {
-        width: 66vw;
-        height: fit-content;
+        width: min-content;
+        height: 100%;
         margin: 0 auto;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr;
@@ -23,6 +27,7 @@
 
     .weather-conditions {
         width: 55vw;
+        margin: auto;
     }
 
     /* Formulier */

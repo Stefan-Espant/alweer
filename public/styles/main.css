@@ -46,6 +46,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
+    position: relative;
     margin: 0;
 }
 
@@ -66,6 +67,7 @@ header {
 }
 
 .index section {
+    width: fit-content;
     margin: auto 0;
 }
 

@@ -10,25 +10,6 @@
                 <h2><%= country %></h2>
             </div>
             <section>
-                <!-- <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_1_78)">
-                    <path d="M22.242 22.242C22.8151 21.6885 23.2722 21.0265 23.5866 20.2944C23.9011 19.5624 24.0666 18.7751 24.0735 17.9784C24.0804 17.1817 23.9286 16.3917 23.6269 15.6543C23.3252 14.9169 22.8797 14.247 22.3164 13.6836C21.753 13.1203 21.0831 12.6748 20.3457 12.3731C19.6083 12.0714 18.8183 11.9196 18.0216 11.9265C17.2249 11.9334 16.4376 12.0989 15.7056 12.4134C14.9735 12.7278 14.3115 13.1849 13.758 13.758C12.6651 14.8896 12.0603 16.4052 12.074 17.9784C12.0876 19.5516 12.7186 21.0565 13.8311 22.1689C14.9435 23.2814 16.4484 23.9124 18.0216 23.926C19.5948 23.9397 21.1104 23.3349 22.242 22.242Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M9.51449 26.4855L7.39349 28.6065" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M9.51449 9.51449L7.39349 7.39349" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M26.4855 9.51449L28.6065 7.39349" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M26.4855 26.4855L28.6065 28.6065" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 18H3" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M18 6V3" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M30 18H33" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M18 30V33" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </g>
-                    <defs>
-                    <clipPath id="clip0_1_78">
-                    <rect width="36" height="36" fill="white"/>
-                    </clipPath>
-                    </defs>
-                </svg> -->
-                    
                 <h2>
                     <%= current_weather.temperature %><sup>°C</sup>
                     <sup>°C</sup>
@@ -53,28 +34,27 @@
                 <article class="widget mid-widget">
                     <h3>Zon op:</h3>
                     <h3>    
-                        <%- include('./partials/svg-icons/sun') %>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-sunrise"></use>
+                        </svg>
                         <%= sunriseTime %>
                     </h3>
                 </article>
                 <article class="widget mid-widget">
                     <h3>Zon onder</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-sunset"></use>
+                        </svg>
                          <%= sunsetTime %>
                     </h3>
                 </article>
                 <article class="widget mid-widget">
                     <h3>Kans op regen</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-umbrella" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M4 12a8 8 0 0 1 16 0z"></path>
-                            <path d="M12 12v6a2 2 0 0 0 4 0"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-cloud-rain"></use>
+                        </svg>
                          <%= hourly.precipitation_probability[0] %>
                          <sup>
                          %
@@ -84,11 +64,9 @@
                 <article class="widget mid-widget">
                     <h3>Hoeveelheid regen</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-rain" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7"></path>
-                            <path d="M11 13v2m0 3v2m4 -5v2m0 3v2"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-droplet"></use>
+                        </svg>
                          <%= hourly.precipitation[0] %>
                          <sup>mm</sup>
                     </h3>
@@ -96,18 +74,9 @@
                 <article class="widget mid-widget">
                     <h3>Luchtdruk</h3>
                     <h3>    
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_412)">
-                            <path d="M11 12C11 12.2652 11.1054 12.5196 11.2929 12.7071C11.4804 12.8946 11.7348 13 12 13C12.2652 13 12.5196 12.8946 12.7071 12.7071C12.8946 12.5196 13 12.2652 13 12C13 11.7348 12.8946 11.4804 12.7071 11.2929C12.5196 11.1054 12.2652 11 12 11C11.7348 11 11.4804 11.1054 11.2929 11.2929C11.1054 11.4804 11 11.7348 11 12Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M7 12C7 13.3261 7.52678 14.5979 8.46447 15.5355C9.40215 16.4732 10.6739 17 12 17C13.3261 17 14.5979 16.4732 15.5355 15.5355C16.4732 14.5979 17 13.3261 17 12C17 10.6739 16.4732 9.40215 15.5355 8.46447C14.5979 7.52678 13.3261 7 12 7C10.6739 7 9.40215 7.52678 8.46447 8.46447C7.52678 9.40215 7 10.6739 7 12Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M3 12C3 13.1819 3.23279 14.3522 3.68508 15.4442C4.13738 16.5361 4.80031 17.5282 5.63604 18.364C6.47177 19.1997 7.46392 19.8626 8.55585 20.3149C9.64778 20.7672 10.8181 21 12 21C13.1819 21 14.3522 20.7672 15.4442 20.3149C16.5361 19.8626 17.5282 19.1997 18.364 18.364C19.1997 17.5282 19.8626 16.5361 20.3149 15.4442C20.7672 14.3522 21 13.1819 21 12C21 10.8181 20.7672 9.64778 20.3149 8.55585C19.8626 7.46392 19.1997 6.47177 18.364 5.63604C17.5282 4.80031 16.5361 4.13738 15.4442 3.68508C14.3522 3.23279 13.1819 3 12 3C10.8181 3 9.64778 3.23279 8.55585 3.68508C7.46392 4.13738 6.47177 4.80031 5.63604 5.63604C4.80031 6.47177 4.13738 7.46392 3.68508 8.55585C3.23279 9.64778 3 10.8181 3 12Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_412">
-                            <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-pressure"></use>
+                        </svg>
                     <span>
                         <%= hourly.surface_pressure[0] %>                    
                         <sup>hPa</sup>
@@ -117,17 +86,9 @@
                 <article class="widget mid-widget">
                     <h3>UV-index</h3>
                     <h3>    
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_431)">
-                            <path d="M9 12C9 12.7956 9.31607 13.5587 9.87868 14.1213C10.4413 14.6839 11.2044 15 12 15C12.7956 15 13.5587 14.6839 14.1213 14.1213C14.6839 13.5587 15 12.7956 15 12C15 11.2044 14.6839 10.4413 14.1213 9.87868C13.5587 9.31607 12.7956 9 12 9C11.2044 9 10.4413 9.31607 9.87868 9.87868C9.31607 10.4413 9 11.2044 9 12Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 6H9.5L12 3.5L14.5 6H18V9.5L20.5 12L18 14.5V18H14.5L12 20.5L9.5 18H6V14.5L3.5 12L6 9.5V6Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_431">
-                            <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                            </defs>
-                            </svg>                            
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-uv-index"></use>
+                        </svg>
                         <%= daily.uv_index_max %>
                     </h3>
                 </article>
@@ -136,14 +97,9 @@
                 <article class="widget mid-widget">
                     <h3>Gevoels-tempratuur</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-thermometer" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M19 5a2.828 2.828 0 0 1 0 4l-8 8h-4v-4l8 -8a2.828 2.828 0 0 1 4 0z"></path>
-                            <path d="M16 7l-1.5 -1.5"></path>
-                            <path d="M13 10l-1.5 -1.5"></path>
-                            <path d="M10 13l-1.5 -1.5"></path>
-                            <path d="M7 17l-3 3"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-uv-index"></use>
+                        </svg>
                     <span>
                         <%= hourly.apparent_temperature[0] %>             
                         <sup>°C</sup>
@@ -153,12 +109,9 @@
                 <article class="widget mid-widget">
                     <h3>Grond-tempratuur</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-seeding" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 10a6 6 0 0 0 -6 -6h-3v2a6 6 0 0 0 6 6h3"></path>
-                            <path d="M12 14a6 6 0 0 1 6 -6h3v1a6 6 0 0 1 -6 6h-3"></path>
-                            <path d="M12 20l0 -10"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-soil-temperature"></use>
+                        </svg>
                          <span>
                             <%= hourly.soil_temperature_6cm[0] %>     
                             <sup>°C</sup>
@@ -168,10 +121,9 @@
                 <article class="widget mid-widget">
                     <h3>Bodemvocht</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-droplet" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M7.502 19.423c2.602 2.105 6.395 2.105 8.996 0c2.602 -2.105 3.262 -5.708 1.566 -8.546l-4.89 -7.26c-.42 -.625 -1.287 -.803 -1.936 -.397a1.376 1.376 0 0 0 -.41 .397l-4.893 7.26c-1.695 2.838 -1.035 6.441 1.567 8.546z"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-texture"></use>
+                        </svg>
                          <span>
                             <%= hourly.soil_moisture_27_81cm[0] %>         
                             <sup>m3</sup>
@@ -181,12 +133,9 @@
                 <article class="widget mid-widget">
                     <h3>Wind-snelheid</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24"></path>
-                            <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24"></path>
-                            <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-windspeed"></use>
+                        </svg>
                          <span>
                             <%= hourly.windspeed_10m[0] %>                  
                             <sup>km/h</sup>
@@ -196,14 +145,9 @@
                 <article class="widget mid-widget">
                     <h3>Wind-richting</h3>
                     <h3>    
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-windsock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M6 3v18"></path>
-                            <path d="M6 11l12 -1v-4l-12 -1"></path>
-                            <path d="M10 5.5v5"></path>
-                            <path d="M14 6v4"></path>
-                            <path d="M4 21h4"></path>
-                         </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-winddirection"></use>
+                        </svg>
                          <span>
                             <%= current_weather.winddirection %>              
                             <sup>°</sup>
@@ -213,17 +157,9 @@
                 <article class="widget mid-widget">
                     <h3>Zicht</h3>
                     <h3>    
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3_422)">
-                            <path d="M10 12C10 12.5304 10.2107 13.0391 10.5858 13.4142C10.9609 13.7893 11.4696 14 12 14C12.5304 14 13.0391 13.7893 13.4142 13.4142C13.7893 13.0391 14 12.5304 14 12C14 11.4696 13.7893 10.9609 13.4142 10.5858C13.0391 10.2107 12.5304 10 12 10C11.4696 10 10.9609 10.2107 10.5858 10.5858C10.2107 10.9609 10 11.4696 10 12Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21 12C18.6 16 15.6 18 12 18C8.4 18 5.4 16 3 12C5.4 8 8.4 6 12 6C15.6 6 18.6 8 21 12Z" stroke="#F4F4F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_3_422">
-                            <rect width="24" height="24" fill="white"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-visibility"></use>
+                        </svg>
                             <span>
                                 <% const visibilityMeters = hourly.visibility[0]; %>
                                 <% const visibilityKilometers = visibilityMeters / 1000; %>
