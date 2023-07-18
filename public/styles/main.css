@@ -68,7 +68,7 @@ header {
 
 .index section {
     width: fit-content;
-    margin: auto 0;
+    margin: auto;
 }
 
 .index h1 {

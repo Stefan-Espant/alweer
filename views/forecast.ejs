@@ -6,7 +6,7 @@
 
         <section class="temperature">
             <div>
-                <h1><%= place %></h1>
+                <h1><%= place.charAt(0).toUpperCase() + place.slice(1) %></h1>
                 <h2><%= country %></h2>
             </div>
             <section>
@@ -16,6 +16,7 @@
                 </h2>
             </section>
         </section>
+        
         <section class="weather-conditions">
             <article class="widget large-widget">
                 <div>
@@ -32,7 +33,7 @@
             </article>
             <div class="overview">
                 <article class="widget mid-widget">
-                    <h3>Zon op:</h3>
+                    <h3>Zon op</h3>
                     <h3>    
                         <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <use xlink:href="../icons.svg#icon-sunrise"></use>

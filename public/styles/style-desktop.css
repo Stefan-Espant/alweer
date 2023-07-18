@@ -6,7 +6,12 @@
 
     .index {
         width: fit-content;
+        height: 100%;
         margin: 0 auto;
+    }
+
+    .index h1 {
+        max-width: 20em;
     }
 
     .forecast {
