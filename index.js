@@ -1,7 +1,7 @@
-// Importeert express uit de node_modules map
 import express from "express";
 import fetch from "node-fetch";
-import translate from "google-translate-api";
+import path from "path";
+import ejs from "ejs";
 
 const app = express();
 
@@ -13,7 +13,7 @@ function getTime(dateTimeString) {
   const dateTime = new Date(dateTimeString);
   const time = dateTime.toLocaleTimeString("en-GB", {
     hour: "numeric",
-    minute: "numeric"
+    minute: "numeric",
   });
   return time;
 }
@@ -25,7 +25,6 @@ async function fetchCoordinates(place) {
     const response = await fetch(locationUrl);
     const data = await response.json();
 
-    // Controleer of er resultaten zijn
     if (data.results && data.results.length > 0) {
       const latitude = data.results[0].latitude;
       const longitude = data.results[0].longitude;
@@ -40,19 +39,30 @@ async function fetchCoordinates(place) {
   }
 }
 
-
 // Maakt een route voor de overzichtspagina
 app.get("/", (request, response) => {
-  response.render("index");
+
+  const searchTerm = request.query.name; // Verander 'name' naar 'place'
+
+  // Maak een verzoek naar de externe API
+  fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}&count=20&language=nl&format=json`)
+    .then(response => response.json())
+    .then(data => {
+      response.render('index', { results: data.results || [] });
+    })
+    .catch(error => {
+      console.log(error);
+      response.render('error');
+    });
 });
 
 app.get("/forecast", async (request, response) => {
-  const place = request.query.place;
+  const place = request.query.name;
 
   try {
     const { latitude, longitude, country } = await fetchCoordinates(place);
 
-    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max`;
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max&language=nl`;
 
     const currentWeatherUrl =
       weatherUrl +
@@ -72,45 +82,37 @@ app.get("/forecast", async (request, response) => {
     const visibility = currentWeather.hourly.visibility;
     const soilMoisture = currentWeather.hourly.soil_moisture_27_81cm;
 
-    response.render("forecast", {
-      time: time,
-      sunriseTime: sunriseTime,
-      sunsetTime: sunsetTime,
-      precipitation: precipitation,
+    const viewsDir = path.resolve("./views");
+    response.render(path.join(viewsDir, "forecast.ejs"), {
+      time,
+      sunriseTime,
+      sunsetTime,
+      precipitation,
       apparent_temperature: apparentTemperature,
       precipitation_probability: precipitationProbability,
       surface_pressure: surfacePressure,
       surface_temperature: surfaceTemperature,
       current_weather: currentWeather.current_weather,
-      visibility: visibility,
-      soilMoisture: soilMoisture,
+      visibility,
+      soilMoisture,
       hourly: currentWeather.hourly,
       daily: currentWeather.daily,
-      place: place,
-      country: country, // Toegevoegde variabele country
-      getTime: getTime // Pass the getTime function to the template
+      place,
+      country,
+      getTime,
     });
-    console.log(weatherUrl)
   } catch (error) {
-    // Handle error
     console.error(error);
-    response.status(500).send("Geen resultaten gevonden voor de opgegeven plaats.");
+    response
+      .status(500)
+      .send("Geen resultaten gevonden voor de opgegeven plaats.");
   }
 });
 
-// Stelt het poortnummer in waar express op gaat luisteren
-app.set("port", process.env.PORT || 8000);
-
-// Start express op, haal het ingestelde poortnummer op
-app.listen(app.get("port"), function () {
-  // Toon een bericht in de console en geef het poortnummer door
-  console.log(
-    `Application started on http://localhost:${app.get("port")}`
-  );
+app.listen(8000, () => {
+  console.log("Server gestart op http://localhost:8000");
 });
 
 async function fetchJson(url, payload = {}) {
-  return await fetch(url, payload)
-    .then((response) => response.json())
-    .catch((error) => error);
+  return await fetch(url, payload).then((response) => response.json());
 }

@@ -14,6 +14,10 @@
         max-width: 20em;
     }
 
+    .index-results ul {
+        width: ;
+    }
+
     .forecast {
         width: min-content;
         height: 100%;
@@ -39,7 +43,25 @@
 
 }
 
+@media (min-width: 64em) {
+    .index section:first-child div {
+        width: fit-content;
+        margin: auto;
+    }
+
+    .index section:first-child {
+        width: 50em;
+    }
+
+    .index section:first-child li div {
+        width: inherit;
+        margin: auto;
+    }
+}
+
 @media (min-width: 80em) {
+
+
     .temperature {
         width: 27.5vw;
         justify-content: center;

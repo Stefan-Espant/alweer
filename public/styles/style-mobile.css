@@ -3,3 +3,18 @@
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
+
+@media (min-width: 40em) {
+
+    .index section:first-child {
+        width: 30em;
+    }
+
+    form {
+        width: 35em;
+    }
+
+    .index-results ul {
+        width: 100%;
+    }
+}

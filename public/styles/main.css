@@ -10,6 +10,7 @@
         --color-primary-50: rgb(82, 167, 253);
         --color-primary-25: rgb(167, 206, 246);
         --color-secundary-100: rgb(237, 59, 59);
+        --color-tetiary-100: rgb(217, 78, 189);
         --color-default: #f4f4f4;        
         --color-accent-25: #eee;
         --color-accent-50: #ccc;
@@ -42,7 +43,7 @@ html {
 }
 
 body {
-    background-image: linear-gradient(215deg, rgb(0, 112, 255) 15%, #D94EBD 60%, #F84F4F 90%);
+    background-image: linear-gradient(215deg, var(--color-primary-100), var(--color-tetiary-100) 60%, var(--color-secundary-100) 90%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
@@ -66,7 +67,7 @@ header {
     height: 80%;
 }
 
-.index section {
+.index section:first-child {
     width: fit-content;
     margin: auto;
     opacity: 0;
@@ -75,6 +76,59 @@ header {
 
 .index h1 {
     font-size: 2.5em;
+}
+
+.index-results {
+    margin: 0;
+    max-height: 25em;
+}
+
+.index-results h2 {
+    margin: 2em 0 1em;
+}
+
+.index-results ul {
+    width: 90vw;
+    height: 12em;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 1em;
+    gap: 1em;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.index-results li {
+    width: 15em;
+    height: 8em;
+    list-style: none;
+    background-color: rgba(244, 244, 244, 10%);
+    border: 2px solid rgb(244, 244, 244);
+    border-radius: 8px;
+    flex-shrink: 0;
+    text-align: left;
+}
+
+.index-results li a {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding: 1em;
+    transition: 0.2s ease-in-out;
+}
+.index-results li:is(:hover, :focus-visible) {
+    -webkit-box-shadow:0px 0px 16px 4px rgba(246, 201, 105, 0.66);
+    -moz-box-shadow: 0px 0px 16px 4px rgba(246, 201, 105, 0.66);
+    box-shadow: 0px 0px 16px 4px rgba(246, 201, 105, 0.66);
+    transition: 0.2s ease-in-out;
+}
+
+.index-results li div {
+    width: 100%;
+    margin: auto;
+    text-align: left;
 }
 
 .forecast {
@@ -239,9 +293,15 @@ sup {
 /* Zoekveld */
 a {
     color: var(--color-default);
+    text-decoration: none;
+}
+
+a:focus-visible {
+    outline: none;
 }
 
 form {
+    width: 80vw;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -250,8 +310,8 @@ form {
 }
 
 input[type="search"] {
-    background-color: rgba(244, 244, 244, 20%);
-    border: 2px solid var(--color-accent-50);
+    background-color: rgba(244, 244, 244, 10%);
+    border: 2px solid var(--color-default);
     color: var(--color-default);
     border-radius: 8px;
     width: 100%;
@@ -269,13 +329,20 @@ input[type="search"]:focus-visible {
 
 button {
     background-color: rgba(244, 244, 244, 0%);
-    border: none;
+    border: 2px solid rgba(244, 244, 244, 0%);
     color: var(--color-default);
     display: flex;
     align-items: center;
     gap: 0.5em;
-    padding: 4px;
+    padding: 8px;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(244, 244, 244, 20%);
+    border: 2px solid var(--color-default);
+    border-radius: 8px;
 }
 
 button svg {
