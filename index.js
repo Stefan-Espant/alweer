@@ -1,13 +1,23 @@
 import express from "express";
 import fetch from "node-fetch";
 import path from "path";
-import ejs from "ejs";
+import rateLimit from 'express-rate-limit';
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
+
+// Stel de limiet in op 1000 verzoeken per dag
+const limiter = rateLimit({
+  windowMs: 24 * 60 * 60 * 1000, // 24 uur in milliseconden
+  max: 1000,
+  message: 'Sorry, de limiet voor het aantal bezoeken aan de website is bereikt. Probeer het morgen opnieuw.',
+});
+
+// Registreer de limietmiddelware voor alle routes
+app.use(limiter);
 
 function getTime(dateTimeString) {
   const dateTime = new Date(dateTimeString);

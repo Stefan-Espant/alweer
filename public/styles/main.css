@@ -251,6 +251,10 @@ header {
     font-size: 0.8em;
 }
 
+/* Limit page */
+
+
+
 /* Typografie */
 
 h1, h2 ,h3 {
@@ -283,6 +287,12 @@ h2 {
 
 h3 {
     color: var(--color-default);
+}
+
+p {
+    max-width: 30em;
+    color: var(--color-default);
+    margin-bottom: 1em;
 }
 
 sup {
