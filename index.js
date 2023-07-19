@@ -18,8 +18,8 @@ function getTime(dateTimeString) {
   return time;
 }
 
-async function fetchCoordinates(place) {
-  const locationUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${place}&count=1&language=en&format=json`;
+async function fetchCoordinates(name) {
+  const locationUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${name}&count=1&language=nl&format=json`;
 
   try {
     const response = await fetch(locationUrl);
@@ -43,7 +43,7 @@ async function fetchCoordinates(place) {
 // Maakt een route voor de overzichtspagina
 app.get("/", (request, response) => {
 
-  const searchTerm = request.query.place; // Verander 'name' naar 'place'
+  const searchTerm = request.query.name;
 
   // Maak een verzoek naar de externe API
   fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}&count=50&language=nl&format=json`)
