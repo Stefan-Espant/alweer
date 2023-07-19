@@ -43,7 +43,7 @@ async function fetchCoordinates(place) {
 // Maakt een route voor de overzichtspagina
 app.get("/", (request, response) => {
 
-  const searchTerm = request.query.name; // Verander 'name' naar 'place'
+  const searchTerm = request.query.place; // Verander 'name' naar 'place'
 
   // Maak een verzoek naar de externe API
   fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}&count=50&language=nl&format=json`)
@@ -58,10 +58,10 @@ app.get("/", (request, response) => {
 });
 
 app.get("/forecast", async (request, response) => {
-  const place = request.query.name;
+  const name = request.query.name;
 
   try {
-    const { latitude, longitude, admin1 , country } = await fetchCoordinates(place);
+    const { latitude, longitude, admin1 , country } = await fetchCoordinates(name);
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max&language=nl`;
 
@@ -98,7 +98,7 @@ app.get("/forecast", async (request, response) => {
       soilMoisture,
       hourly: currentWeather.hourly,
       daily: currentWeather.daily,
-      place,
+      name,
       admin1,
       country,
       getTime,
