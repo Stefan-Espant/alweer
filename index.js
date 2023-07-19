@@ -28,8 +28,9 @@ async function fetchCoordinates(place) {
     if (data.results && data.results.length > 0) {
       const latitude = data.results[0].latitude;
       const longitude = data.results[0].longitude;
+      const admin1 = data.results[0].admin1;
       const country = data.results[0].country;
-      return { latitude, longitude, country };
+      return { latitude, longitude, admin1 ,country };
     } else {
       throw new Error("Geen resultaten gevonden voor de opgegeven plaats.");
     }
@@ -45,7 +46,7 @@ app.get("/", (request, response) => {
   const searchTerm = request.query.name; // Verander 'name' naar 'place'
 
   // Maak een verzoek naar de externe API
-  fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}&count=20&language=nl&format=json`)
+  fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}&count=50&language=nl&format=json`)
     .then(response => response.json())
     .then(data => {
       response.render('index', { results: data.results || [] });
@@ -60,7 +61,7 @@ app.get("/forecast", async (request, response) => {
   const place = request.query.name;
 
   try {
-    const { latitude, longitude, country } = await fetchCoordinates(place);
+    const { latitude, longitude, admin1 , country } = await fetchCoordinates(place);
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max&language=nl`;
 
@@ -98,6 +99,7 @@ app.get("/forecast", async (request, response) => {
       hourly: currentWeather.hourly,
       daily: currentWeather.daily,
       place,
+      admin1,
       country,
       getTime,
     });

@@ -43,7 +43,7 @@ html {
 }
 
 body {
-    background-image: linear-gradient(215deg, var(--color-primary-100), var(--color-tetiary-100) 60%, var(--color-secundary-100) 90%);
+    background-image: linear-gradient(225deg, var(--color-primary-100), var(--color-tetiary-100) 60%, var(--color-secundary-100) 90%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
@@ -101,7 +101,7 @@ header {
 
 .index-results li {
     width: 15em;
-    height: 8em;
+    height: 10em;
     list-style: none;
     background-color: rgba(244, 244, 244, 10%);
     border: 2px solid rgb(244, 244, 244);

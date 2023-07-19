@@ -1,0 +1,19 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary-100: rgb(0, 81, 163);
+        --color-primary-50: rgb(82, 167, 253);
+        --color-primary-25: rgb(167, 206, 246);
+        --color-secundary-100: rgb(80, 2, 2);
+        --color-tetiary-100: rgb(84, 4, 68);
+        --color-default: #f4f4f4;
+        --color-accent-25: #eee;
+        --color-accent-50: #ccc;
+        --color-accent-100: #888;
+        --color-invert: #111;
+    }
+
+    .widget {
+        background-color: rgba(244, 244, 244, 10%);
+        border: 1px solid rgb(244, 244, 244, 66%);
+    }
+}

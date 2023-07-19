@@ -67,9 +67,26 @@ include('./partials/header') %>
 			  </ul>
 			<% } %>
 		  </section>		  
-		  
+		</div>
 	</section>
 	
 </main>
 
 <%- include('./partials/foot') %>
+
+<script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocatie wordt niet ondersteund door deze browser.");
+  }
+}
+
+function showPosition(position) {
+  const latitude = position.coords.latitude;
+  const longitude = position.coords.longitude;
+  const url = `/forecast?lat=${latitude}&lon=${longitude}`;
+  window.location.href = url;
+}
+</script>
