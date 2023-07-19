@@ -6,8 +6,9 @@
 
 @media (min-width: 40em) {
 
-    .index section:first-child {
+    .index section:first-child div {
         width: 30em;
+        margin: auto;
     }
 
     form {

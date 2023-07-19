@@ -53,7 +53,7 @@
         width: 50em;
     }
 
-    .index section:first-child li div {
+    .index section:first-child li span {
         width: inherit;
         margin: auto;
     }

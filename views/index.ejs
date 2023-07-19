@@ -52,15 +52,15 @@ include('./partials/header') %>
 				<% results.forEach(result => { %>
 				  <li>
 					<a href="/forecast?name=<%= result.name %>" title="<%= result.name %>, <%= result.country %>">
-						<div>
+						<span>
 					  		<h2><%= result.name %></h2>
-						</div>
-						<div>
+						</span>
+						<span>
 							<p><%= result.admin1 %></p>
-						</div>
-						<div>
+						</span>
+						<span>
 							<h3><%= result.country %></h3>
-						</div>
+						</span>
 					</a>
 				  </li>
 				<% }); %>
