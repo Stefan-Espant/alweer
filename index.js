@@ -1,24 +1,12 @@
 import express from "express";
 import fetch from "node-fetch";
 import path from "path";
-import rateLimit from "express-rate-limit";
 
 const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use(express.static("public"));
-
-// Stel de limiet in op 1000 verzoeken per dag
-const limiter = rateLimit({
-  windowMs: 24 * 60 * 60 * 1000, // 24 uur in milliseconden
-  max: 1000,
-  message:
-    "Sorry, de limiet voor het aantal bezoeken aan de website is bereikt. Probeer het morgen opnieuw.",
-});
-
-// Registreer de limietmiddelware voor alle routes
-app.use(limiter);
 
 function getTime(dateTimeString) {
   const dateTime = new Date(dateTimeString);
@@ -29,8 +17,8 @@ function getTime(dateTimeString) {
   return time;
 }
 
-async function fetchCoordinates(id) {
-  const locationUrl = `https://geocoding-api.open-meteo.com/v1/location/${id}?language=nl&format=json`;
+async function fetchCoordinates(name) {
+  const locationUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${name}&count=1&language=nl&format=json`;
 
   try {
     const response = await fetch(locationUrl);
@@ -41,7 +29,7 @@ async function fetchCoordinates(id) {
       const longitude = data.results[0].longitude;
       const admin1 = data.results[0].admin1;
       const country = data.results[0].country;
-      return { latitude, longitude, admin1, country };
+      return { latitude, longitude, admin1 ,country };
     } else {
       throw new Error("Geen resultaten gevonden voor de opgegeven plaats.");
     }
@@ -51,13 +39,20 @@ async function fetchCoordinates(id) {
   }
 }
 
+// Maakt een route voor de overzichtspagina
 app.get("/", (request, response) => {
   const searchTerm = request.query.name;
 
+  // Maakt een verzoek naar de externe API
   fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${searchTerm}&count=50&language=nl&format=json`)
     .then(response => response.json())
     .then(data => {
-      response.render('index', { results: data.results || [] });
+      const resultsWithLinks = data.results.map(result => {
+        const link = `/forecast?name=${encodeURIComponent(result.name)}&lat=${result.latitude}&lon=${result.longitude}`;
+        return { ...result, link };
+      });
+
+      response.render('index', { results: resultsWithLinks || [] });
     })
     .catch(error => {
       console.log(error);
@@ -65,12 +60,13 @@ app.get("/", (request, response) => {
     });
 });
 
+// Maakt een route voor de detailpagina
 app.get("/forecast", async (request, response) => {
-  const locationId = request.query.id;
+  const id = request.query.id;
+  const name = request.query.name;
 
   try {
-    // Gebruik de ID om coördinaten op te halen
-    const { latitude, longitude, admin1, country } = await fetchCoordinates(locationId);
+    const { latitude, longitude, admin1 , country } = await fetchCoordinates(name);
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,weathercode,surface_pressure,cloudcover,visibility,windspeed_10m,soil_temperature_6cm,soil_moisture_27_81cm&daily=sunrise,sunset,uv_index_max&language=nl`;
 
@@ -94,6 +90,7 @@ app.get("/forecast", async (request, response) => {
 
     const viewsDir = path.resolve("./views");
     response.render(path.join(viewsDir, "forecast.ejs"), {
+      id,
       time,
       sunriseTime,
       sunsetTime,
@@ -107,27 +104,23 @@ app.get("/forecast", async (request, response) => {
       soilMoisture,
       hourly: currentWeather.hourly,
       daily: currentWeather.daily,
-      name: locationId, // Gebruik de locatie-ID in plaats van "searchTerm"
+      name,
       admin1,
       country,
       getTime,
     });
+
+    console.log(weatherUrl)
   } catch (error) {
-    console.error("Fout bij het ophalen van gegevens:", error);
-
-    if (error instanceof Error) {
-      // Log de foutboodschap en details
-      console.error(error.message);
-      console.error(error.stack);
-    }
-
-    response.status(500).send("Geen resultaten gevonden voor de opgegeven locatie.");
+    console.error(error);
+    response
+      .status(500)
+      .send("Geen resultaten gevonden voor de opgegeven plaats.");
   }
 });
 
-
-app.listen(8888, () => {
-  console.log("Server gestart op http://localhost:8888");
+app.listen(8000, () => {
+  console.log("Server gestart op http://localhost:8000");
 });
 
 async function fetchJson(url, payload = {}) {

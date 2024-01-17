@@ -1,176 +1,178 @@
 <%- include('./partials/head') %>
+
 <%- include('./partials/header') %>
 
-<main class="forecast">
+    <main class="forecast">
 
-    <section class="temperature">
-        <div>
-            <h1><%= name.charAt(0).toUpperCase() + name.slice(1) %></h1>
-            <h2><%= admin1 %>, <%= country %></h2>
-        </div>
-        <section>
-            <h2>
-                <%= current_weather.temperature %><sup>°C</sup>
-                <sup>°C</sup>
-            </h2>
-        </section>
-    </section>
-    
-    <section class="weather-conditions">
-        <article class="widget large-widget">
+        <section class="temperature">
             <div>
-                <h2>Vandaag</h2>
+                <h1><%= name.charAt(0).toUpperCase() + name.slice(1) %></h1>
+                <h2><%= admin1 %>, <%= country %></h2>
             </div>
-            <ul>
-                <% for (let i = 0; i < 24; i++) { %>
-                  <li>
-                    <p><%= getTime(hourly.time[i]) %></p>
-                    <h3><%= hourly.temperature_2m[i] %></h3>
-                  </li>
-                <% } %>
-              </ul>
-        </article>
-        <div class="overview">
-            <article class="widget mid-widget">
-                <h3>Zon op</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-sunrise"></use>
-                    </svg>
-                    <%= sunriseTime %>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Zon onder</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-sunset"></use>
-                    </svg>
-                     <%= sunsetTime %>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Kans op regen</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-cloud-rain"></use>
-                    </svg>
-                     <%= hourly.precipitation_probability[0] %>
-                     <sup>
-                     %
-                    </sup>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Hoeveelheid regen</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-droplet"></use>
-                    </svg>
-                     <%= hourly.precipitation[0] %>
-                     <sup>mm</sup>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Luchtdruk</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-pressure"></use>
-                    </svg>
-                <span>
-                    <%= hourly.surface_pressure[0] %>                    
-                    <sup>hPa</sup>
-                </span>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>UV-index</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-uv-index"></use>
-                    </svg>
-                    <%= daily.uv_index_max %>
-                </h3>
-            </article>
-        </div>
-        <div class="overview">
-            <article class="widget mid-widget">
-                <h3>Gevoels-tempratuur</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-uv-index"></use>
-                    </svg>
-                <span>
-                    <%= hourly.apparent_temperature[0] %>             
+            <section>
+                <h2>
+                    <%= current_weather.temperature %><sup>°C</sup>
                     <sup>°C</sup>
-                </span>
-                </h3>
+                </h2>
+            </section>
+        </section>
+        
+        <section class="weather-conditions">
+            <article class="widget large-widget">
+                <div>
+                    <h2>Vandaag</h2>
+                </div>
+                <ul>
+                    <% for (let i = 0; i < 24; i++) { %>
+                      <li>
+                        <p><%= getTime(hourly.time[i]) %></p>
+                        <h3><%= hourly.temperature_2m[i] %></h3>
+                      </li>
+                    <% } %>
+                  </ul>
             </article>
-            <article class="widget mid-widget">
-                <h3>Grond-tempratuur</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-soil-temperature"></use>
-                    </svg>
-                     <span>
-                        <%= hourly.soil_temperature_6cm[0] %>     
+            <div class="overview">
+                <article class="widget mid-widget">
+                    <h3>Zon op</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-sunrise"></use>
+                        </svg>
+                        <%= sunriseTime %>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Zon onder</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-sunset"></use>
+                        </svg>
+                         <%= sunsetTime %>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Kans op regen</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-cloud-rain"></use>
+                        </svg>
+                         <%= hourly.precipitation_probability[0] %>
+                         <sup>
+                         %
+                        </sup>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Hoeveelheid regen</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-droplet"></use>
+                        </svg>
+                         <%= hourly.precipitation[0] %>
+                         <sup>mm</sup>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Luchtdruk</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-pressure"></use>
+                        </svg>
+                    <span>
+                        <%= hourly.surface_pressure[0] %>                    
+                        <sup>hPa</sup>
+                    </span>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>UV-index</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-uv-index"></use>
+                        </svg>
+                        <%= daily.uv_index_max %>
+                    </h3>
+                </article>
+            </div>
+            <div class="overview">
+                <article class="widget mid-widget">
+                    <h3>Gevoels-tempratuur</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-uv-index"></use>
+                        </svg>
+                    <span>
+                        <%= hourly.apparent_temperature[0] %>             
                         <sup>°C</sup>
                     </span>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Bodemvocht</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-texture"></use>
-                    </svg>
-                     <span>
-                        <%= hourly.soil_moisture_27_81cm[0] %>         
-                        <sup>m3</sup>
-                    </span>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Wind-snelheid</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-windspeed"></use>
-                    </svg>
-                     <span>
-                        <%= hourly.windspeed_10m[0] %>                  
-                        <sup>km/h</sup>
-                    </span>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Wind-richting</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-winddirection"></use>
-                    </svg>
-                     <span>
-                        <%= current_weather.winddirection %>              
-                        <sup>°</sup>
-                    </span>
-                </h3>
-            </article>
-            <article class="widget mid-widget">
-                <h3>Zicht</h3>
-                <h3>    
-                    <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <use xlink:href="../icons.svg#icon-visibility"></use>
-                    </svg>
-                        <span>
-                            <% const visibilityMeters = hourly.visibility[0]; %>
-                            <% const visibilityKilometers = visibilityMeters / 1000; %>
-                            <%= visibilityKilometers %>              
-                            <sup>km</sup>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Grond-tempratuur</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-soil-temperature"></use>
+                        </svg>
+                         <span>
+                            <%= hourly.soil_temperature_6cm[0] %>     
+                            <sup>°C</sup>
                         </span>
-                </h3>
-            </article>
-        </div>
-    </section>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Bodemvocht</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-texture"></use>
+                        </svg>
+                         <span>
+                            <%= hourly.soil_moisture_27_81cm[0] %>         
+                            <sup>m3</sup>
+                        </span>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Wind-snelheid</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-windspeed"></use>
+                        </svg>
+                         <span>
+                            <%= hourly.windspeed_10m[0] %>                  
+                            <sup>km/h</sup>
+                        </span>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Wind-richting</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-winddirection"></use>
+                        </svg>
+                         <span>
+                            <%= current_weather.winddirection %>              
+                            <sup>°</sup>
+                        </span>
+                    </h3>
+                </article>
+                <article class="widget mid-widget">
+                    <h3>Zicht</h3>
+                    <h3>    
+                        <svg class="icon icon-tabler" width="24" height="24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <use xlink:href="../icons.svg#icon-visibility"></use>
+                        </svg>
+                            <span>
+                                <% const visibilityMeters = hourly.visibility[0]; %>
+                                <% const visibilityKilometers = visibilityMeters / 1000; %>
+                                <%= visibilityKilometers %>              
+                                <sup>km</sup>
+                            </span>
+                    </h3>
+                </article>
+            </div>
+        </section>
 
-</main>
+    </main>
+
 
 <%- include('./partials/foot') %>
