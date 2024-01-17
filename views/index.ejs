@@ -1,92 +1,75 @@
-<%- include('./partials/head') %> <%-
-include('./partials/header') %>
+<%- include('./partials/head') %>
+<%- include('./partials/header') %>
 
 <main class="index">
-	<section class="fade-in">
-		<div>
-		<h1>Bekijk de voorspellingen van:</h1>
+  <section class="fade-in">
+    <div>
+      <h1>Bekijk de voorspellingen van:</h1>
 
-		<form action="/" method="get" autocomplete="off">
-			<label for="search" hidden>Zoek een plaats</label>
-			<input
-				required
-				id="search"
-				type="search"
-				name="name"
-				placeholder="Amsterdam, Breda, Coevorden..."
-				value=""
-			/>
+      <form action="/" method="get" autocomplete="off">
+        <label for="search" hidden>Zoek een plaats</label>
+        <input
+          required
+          id="search"
+          type="search"
+          name="name"
+          placeholder="Amsterdam, Breda, Coevorden..."
+          value=""
+        />
 
-			<button id="searchbutton" title="zoeken" type="submit" value="zoeken">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="icon icon-tabler icon-tabler-search"
-					width="24"
-					height="24"
-					viewBox="0 0 24 24"
-					stroke-width="2"
-					stroke="currentColor"
-					fill="none"
-					stroke-linecap="round"
-					stroke-linejoin="round"
-				>
-					<path
-						stroke="none"
-						d="M0 0h24v24H0z"
-						fill="none"
-					></path>
-					<path
-						d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"
-					></path>
-					<path d="M21 21l-6 -6"></path>
-				</svg>
-				Zoeken
-			</button>
-		</form>
-		</div>
+        <button id="searchbutton" title="zoeken" type="submit" value="zoeken">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-search"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              stroke="none"
+              d="M0 0h24v24H0z"
+              fill="none"
+            ></path>
+            <path
+              d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"
+            ></path>
+            <path d="M21 21l-6 -6"></path>
+          </svg>
+          Zoeken
+        </button>
+      </form>
+    </div>
 
-		<section class="index-results">
-			<% if (results.length > 0) { %>
-			  <h2 hidden>Zoekresultaten</h2>
-			  <ul>
-				<% results.forEach(result => { %>
-				  <li>
-					<a href="/forecast?name=<%= result.name %>" title="<%= result.name %>, <%= result.country %>">
-						<span>
-					  		<h2><%= result.name %></h2>
-						</span>
-						<span>
-							<p><%= result.admin1 %></p>
-						</span>
-						<span>
-							<h3><%= result.country %></h3>
-						</span>
-					</a>
-				  </li>
-				<% }); %>
-			  </ul>
-			<% } %>
-		  </section>		  
-		</div>
-	</section>
-	
+    <section class="index-results">
+      <% if (results.length > 0) { %>
+        <h2 hidden>Zoekresultaten</h2>
+        <ul>
+          <% results.forEach(result => { %>
+            <li>
+              <a href="/forecast?latitude=<%= result.latitude %>&longitude<%= result.longitude %>">
+                <span>
+                  <h2><%= result.name %></h2>
+                </span>
+                <span>
+                  <p><%= result.admin1 %></p>
+                </span>
+                <span>
+                  <h3><%= result.country %></h3>
+                </span>
+              </a>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %>
+    </section>
+
+  </section>
+
 </main>
 
 <%- include('./partials/foot') %>
-
-<script>
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    alert("Geolocatie wordt niet ondersteund door deze browser.");
-  }
-}
-
-function showPosition(position) {
-  const latitude = position.coords.latitude;
-  const longitude = position.coords.longitude;
-  const url = `/forecast?lat=${latitude}&lon=${longitude}`;
-  window.location.href = url;
-}
-</script>

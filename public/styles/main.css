@@ -268,16 +268,7 @@ h1 {
     font-weight: 300;
     font-size: 2.5em;
     max-width: 10em;
-}
-
-h1 mark {
-    background-color: deepskyblue;
-    color: var(--color-default);
-    padding: 0.5rem 0.5rem 0.2rem 0.5rem;
-    font-size: 150%;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 8px;
+    margin-bottom: 0.33em;
 }
 
 h2 {
